@@ -43,7 +43,7 @@
 }
 .header {
   background-color: cadetblue;
-  height: 200px;
+  height: 225px;
   flex-grow: 2;
 }
 .parentDiv {
@@ -61,7 +61,6 @@ ul {
   flex-wrap: wrap;
 }
 li {
-  /* border: 2px solid grey; */
   background-color: #f8dc3d;
   height: 150px;
   width: 150px;
@@ -71,21 +70,20 @@ li {
   margin: 10px;
 }
 .addButton {
-  -webkit-transition-duration: 0.4s; /* Safari */
+  -webkit-transition-duration: 0.4s;
   transition-duration: 0.4s;
   background-color: #4caf50;
   color: white;
   border: none;
   width: 15%;
-  font-size: 24pt;
+  font-size: 20pt;
 }
 .addButton:hover {
-  background-color: #4caf50; /* Green */
+  background-color: #4caf50;
   color: white;
 }
 
 ul > li:hover {
-  /* background-color: gray; */
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
@@ -96,9 +94,6 @@ ul > li:hover {
 }
 
 .deleteButton {
-  /* margin-top: 1px;
-  margin-right: 2px; */
-  /* position: absolute; */
   bottom: 0;
   right: 0;
   display: none;
@@ -124,7 +119,6 @@ input {
 }
 textarea {
   width: 100%;
-  /* border: 0.2px solid lightgrey; */
   border: none;
   padding: 12px 5px;
   margin: 8px 0;
@@ -132,9 +126,11 @@ textarea {
   resize: none;
   background-color: #f8dc3d;
 }
+a {
+  text-decoration: none;
+}
 .inputDiv:hover + .deleteButton,
 .deleteButton:hover {
-  /* display: inline-block; */
   display: flex;
   justify-content: flex-end;
 }
@@ -142,7 +138,7 @@ textarea {
 .dropdown {
   display: inline-block;
   margin-top: 15px;
-  -webkit-transition-duration: 0.4s; /* Safari */
+  -webkit-transition-duration: 0.4s;
   transition-duration: 0.4s;
   background-color: #4caf50;
   color: white;
@@ -154,9 +150,11 @@ textarea {
 .dropdown-content {
   display: none;
   background-color: lightgreen;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  padding: 12px 16px;
   z-index: 1;
+  font-size: 15pt;
+}
+.dropdown-content p {
+  margin: 2px;
 }
 
 .dropdown:hover .dropdown-content {

@@ -5,19 +5,26 @@ class Ideas extends Component {
   constructor(props) {
     super(props);
     //initial list
-    const ideaList = [
+    let ideaList = [
       {
         id: "1234",
-        created_date: "12/12/19",
-        title: "Title",
-        body: "this is body",
+        created_date: new Date(),
+        title: "Instragram Bot",
+        body: "A python script to automate instagram posts.",
         bodyLength: 0
       },
       {
         id: "1235",
-        created_date: "13/12/19",
-        title: "Title2",
-        body: "this is body2",
+        created_date: new Date(),
+        title: "Idea Generator",
+        body: "A websitre crawler to fetch trending ideas from the internet.",
+        bodyLength: 0
+      },
+      {
+        id: "1236",
+        created_date: new Date(),
+        title: "Franchise Store",
+        body: "A cafe franchise of a renowned brand.",
         bodyLength: 0
       }
     ];
@@ -44,10 +51,6 @@ class Ideas extends Component {
   handleBodyChange = (e, id) => {
     e.preventDefault();
     let ideaList = this.state.ideaList;
-    console.log(id);
-    // if (e.target.value.toString().length > 20)
-    // document.getElementById("" + id) = "" + e.target.value.toString().length;
-
     ideaList.map((idea, index) => {
       if (index === id) {
         idea.body = e.target.value;
@@ -57,17 +60,15 @@ class Ideas extends Component {
     this.setState({ ideaList });
   };
   removeIdea = index => {
-    console.log("removeIdea called");
     const ideaList = this.state.ideaList;
     ideaList.splice(index, 1);
     this.setState({ ideaList });
   };
   addIdea = () => {
     const ideaList = this.state.ideaList;
-
     ideaList.unshift({
-      id: "1235",
-      created_date: "13/12/19",
+      id: ideaList.length + 1,
+      created_date: new Date(),
       title: "",
       body: ""
     });
@@ -77,7 +78,7 @@ class Ideas extends Component {
     console.log(index);
     //Api call to save current Item can be made here...
     //saving in the localstorage
-    //localStorage.setItem('ideaList',this.state.ideaList);
+    localStorage.setItem("ideaList", JSON.stringify(this.state.ideaList));
     this.showNotification();
   };
 
@@ -85,12 +86,26 @@ class Ideas extends Component {
     document.getElementById("myDropdown").classList.toggle("show");
   };
   componentDidMount() {
-    console.log("local storage " + localStorage.getItem("ideaList"));
     if (localStorage.getItem("ideaList")) {
-      const ideaList = localStorage.getItem("ideaList");
+      let ideaList = [];
+      ideaList = JSON.parse(localStorage.getItem("ideaList"));
       this.setState({ ideaList });
     }
   }
+  sortByTitle = e => {
+    e.preventDefault();
+    const ideaList = this.state.ideaList;
+    ideaList.sort((a, b) => a.title.localeCompare(b.title));
+    this.setState({ ideaList });
+  };
+  sortByDate = e => {
+    e.preventDefault();
+    const ideaList = this.state.ideaList;
+    ideaList.sort(
+      (a, b) => new Date(b.created_date) - new Date(a.created_date)
+    );
+    this.setState({ ideaList });
+  };
   render() {
     return (
       <div className="mainDiv">
@@ -106,39 +121,35 @@ class Ideas extends Component {
           </div>
 
           <div className="dropdown">
-            <span>Sort</span>
-            <div className="dropdown-content">
-              <p>Title</p>
-            </div>
-            <div className="dropdown-content">
-              <p>Date</p>
-            </div>
+            <span>Sort</span> <i className="material-icons">sort</i>
+            <a href="" onClick={e => this.sortByTitle(e)}>
+              <div className="dropdown-content">
+                <p>Title</p>
+              </div>
+            </a>
+            <a href="" onClick={e => this.sortByDate(e)}>
+              <div className="dropdown-content">
+                <p>Date</p>
+              </div>
+            </a>
           </div>
         </div>
 
         <ul>
           {this.state.ideaList.map((item, index) => {
-            //   var todoClass = item.title ? "done" : "undone";
             return (
-              <li className="list-group-item">
+              <li className="list-group-item" key={index}>
                 <div className="parentDiv">
-                  {/* <span
-                        className="glyphicon glyphicon-ok icon"
-                        aria-hidden="true"
-                        onClick={this.onClickDone}
-                      ></span> */}
                   <div className="inputDiv">
                     <input
                       value={item.title}
                       placeholder="...idea title"
                       onChange={e => this.handleTitleChange(e, index)}
                       onBlur={e => this.onBlur(e, index)}
-                      //   ref={input => {
-                      //     index == 0 && input && input.focus();
-                      //   }}
                     />
                     <textarea
                       maxLength="150"
+                      value={item.body}
                       placeholder="....describe your idea (max:150)"
                       onChange={e => this.handleBodyChange(e, index)}
                       onBlur={e => this.onBlur(e, index)}
@@ -150,11 +161,6 @@ class Ideas extends Component {
                     </div>
                   </div>
                   <div className="deleteButton">
-                    {/* <button
-                    //onClick={this.onClickClose}
-                    >
-                      <i className="material-icons">edit</i>
-                    </button> */}
                     <button onClick={this.removeIdea}>
                       <i className="material-icons">delete</i>
                     </button>
