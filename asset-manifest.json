@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/idea-board/static/css/main.f2462f30.chunk.css",
+    "main.js": "/idea-board/static/js/main.56e6d6e0.chunk.js",
+    "main.js.map": "/idea-board/static/js/main.56e6d6e0.chunk.js.map",
+    "runtime-main.js": "/idea-board/static/js/runtime-main.2eb44d79.js",
+    "runtime-main.js.map": "/idea-board/static/js/runtime-main.2eb44d79.js.map",
+    "static/js/2.efa66d2d.chunk.js": "/idea-board/static/js/2.efa66d2d.chunk.js",
+    "static/js/2.efa66d2d.chunk.js.map": "/idea-board/static/js/2.efa66d2d.chunk.js.map",
+    "index.html": "/idea-board/index.html",
+    "precache-manifest.6af47e8cd2ab94fbd416d602c0b07269.js": "/idea-board/precache-manifest.6af47e8cd2ab94fbd416d602c0b07269.js",
+    "service-worker.js": "/idea-board/service-worker.js",
+    "static/css/main.f2462f30.chunk.css.map": "/idea-board/static/css/main.f2462f30.chunk.css.map",
+    "static/js/2.efa66d2d.chunk.js.LICENSE": "/idea-board/static/js/2.efa66d2d.chunk.js.LICENSE",
+    "static/media/logo.svg": "/idea-board/static/media/logo.5d5d9eef.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.2eb44d79.js",
+    "static/js/2.efa66d2d.chunk.js",
+    "static/css/main.f2462f30.chunk.css",
+    "static/js/main.56e6d6e0.chunk.js"
+  ]
+}
