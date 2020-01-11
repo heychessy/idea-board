@@ -1,4 +1,3 @@
-import ReactDOM from "react-dom";
 import React, { Component } from "react";
 
 class Ideas extends Component {
@@ -32,17 +31,10 @@ class Ideas extends Component {
       ideaList: ideaList
     };
   }
-  showNotification = () => {
-    var x = document.getElementById("notification");
-    x.className = "show";
-    setTimeout(function() {
-      x.className = x.className.replace("show", "");
-    }, 3000);
-  };
+
   handleTitleChange = (e, id) => {
     e.preventDefault();
     let ideaList = this.state.ideaList;
-    console.log(id);
     ideaList.map((idea, index) => {
       if (index === id) idea.title = e.target.value;
     });
@@ -75,7 +67,6 @@ class Ideas extends Component {
     this.setState({ ideaList });
   };
   onBlur = (e, index) => {
-    console.log(index);
     //Api call to save current Item can be made here...
     //saving in the localstorage
     localStorage.setItem("ideaList", JSON.stringify(this.state.ideaList));
@@ -105,6 +96,13 @@ class Ideas extends Component {
       (a, b) => new Date(b.created_date) - new Date(a.created_date)
     );
     this.setState({ ideaList });
+  };
+  showNotification = () => {
+    var x = document.getElementById("notification");
+    x.className = "show";
+    setTimeout(function() {
+      x.className = x.className.replace("show", "");
+    }, 3000);
   };
   render() {
     return (
